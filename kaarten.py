@@ -15,21 +15,24 @@
 # print("\n","DECK KAARTEN", kaart)
 
 import random
-from turtle import clear 
 
 card = ["klaver","schoppen","harten","ruiten"]
-card1 = [2,3,4,5,6,7,8,9,10,"boer","vrouw","heer","aas","joker"]
+card1 = [2,3,4,5,6,7,8,9,10,"boer","vrouw","heer","aas"]
 cards = []
 
 for i in card:
     for x in card1:
         cards.append(i + " " +str(x)) 
 
+
 random.shuffle(cards)
 
+
+
 for e in range(1,8):
-    cards.pop(e)
-    print(f"kaart: {e}: {cards[e]}")
+    index = random.randint(0,len(cards)-1)
+    card = cards.pop(index)
+    print(f"kaart: {e}: {card}")
 
 print("\n[DECK]",cards)
 
