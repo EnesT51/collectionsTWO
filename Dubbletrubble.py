@@ -10,14 +10,12 @@ def intro():
     print('                      Welcome to Dobbel Trobbel                        ')
     print('-----------------------------------------------------------------------')
 
-def scoreboard():    
+def scoreboard(): 
     print('\nPosition: |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10 |')
+    print("Blauw_lijst       ",Blauw_SB)
+    print("Rood_lijst        ",Rood_SB)
+    print("Wit_lijst         ",Wit_SB)
     print('-----------------------------------------------------------------------')
-    print(f'Blauw lijst: |{Blauw_SB[0]}   |  {Blauw_SB[1]} |  {Blauw_SB[2]}|  {Blauw_SB[3]} |  {Blauw_SB[4]} |  {Blauw_SB[5]} |  {Blauw_SB[6]} |  {Blauw_SB[7]} |  {Blauw_SB[8]} |  {Blauw_SB[9]}|')
-    print(f'Rood lijst:  |{Rood_SB[0]}  |  {Rood_SB[1]}  |  {Rood_SB[2]} |  {Rood_SB[3]}  |  {Rood_SB[4]}  |  {Rood_SB[5]}  |  {Rood_SB[6]}  |  {Rood_SB[7]}  |  {Rood_SB[8]}  |  {Rood_SB[9]} |')
-    print(f'wit lijst:                 |  {Wit_SB[0]}   |  {Wit_SB[1]}   |  {Wit_SB[2]}   |  {Wit_SB[3]}   |  {Wit_SB[4]}   |')
-    print('-----------------------------------------------------------------------')
-    
 
 # def dobbelsteen(aantal):
 # dobbelsteen_lijst = []
@@ -56,9 +54,9 @@ def bepaal_lijst_kleur(blauw,rood):
     elif rood < blauw:
         return "Rood"
     keuzen = input("In welke lijst wil je het hebben? Rood / Blauw:? ").upper()
-    return keuzen 
+    return keuzen
 
-def lijst_index():
+def position_lijst():
     pass
 
 actief = True
@@ -76,11 +74,12 @@ while actief:
     maximum = max(blauw,rood,wit)
     totaal = (maximum - minimun)
     print("D:",maximum,"-",minimun,"=",totaal)
+    print("\n")
     index = keuzen()
     uitkomsten[index]
-    keuzen_lijst = bepaal_lijst_kleur()
-    lijst_index(keuzen_lijst)
-    actief = False
+    bepaal_lijst_kleur(blauw,rood)
+
+
 
 
 
