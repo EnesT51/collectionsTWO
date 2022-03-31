@@ -1,9 +1,9 @@
 import random
 
-
 Blauw_SB =[-2,"","","","","","","","",""]
 Rood_SB  =["","","","","","","","","",-2]
 Wit_SB   =["","","","",""]
+
 
 def intro():
     print('-----------------------------------------------------------------------')
@@ -16,17 +16,6 @@ def scoreboard():
     print("Rood_lijst        ",Rood_SB)
     print("Wit_lijst         ",Wit_SB)
     print('-----------------------------------------------------------------------')
-
-# def dobbelsteen(aantal):
-# dobbelsteen_lijst = []
-#     for i in range(0,aantal):
-#         dobbelsteen = random.randint(1,6)
-#         witdobbelsteen = [1,1,1,2,2,3]
-#         dobbelsteen_lijst.append(dobbelsteen)
-#         dobbelsteen_lijst.append(witdobbelsteen)
-#     return dobbelsteen_lijst
-
-# print(dobbelsteen(3))
 
 def dobbelsteen():
     blauw_dobbelsteen = random.randint(1,6)
@@ -50,14 +39,28 @@ def keuzen():
 
 def bepaal_lijst_kleur(blauw,rood):
     if blauw < rood:
-        return "Blauw"
-    elif rood < blauw:
         return "Rood"
+    elif rood < blauw:
+        return "Blauw"
     keuzen = input("In welke lijst wil je het hebben? Rood / Blauw:? ").upper()
     return keuzen
 
-def position_lijst():
-    pass
+def position_lijst(lijst_kleur,index_1):
+    if lijst_kleur == "Blauw":
+        positie = int(input('in welke positie van de blauwe lijst wil je het hebben? '))
+        if Blauw_SB[positie -1] == "":
+           Blauw_SB[positie -1] = uitkomsten[index_1]
+        else:
+            print("er zit al een waarde in de gekozen index ")
+            position_lijst(lijst_kleur,index_1) 
+    elif lijst_kleur == "Rood":
+        positie = int(input('in welke positie van de rode lijst wil je het hebben? '))
+        if Rood_SB[positie -1] == "":
+           Rood_SB[positie -1] = uitkomsten[index_1]
+        else:
+            print("er zit al een waarde in de gekozen index ")
+            position_lijst(lijst_kleur,index_1)
+    
 
 actief = True
 while actief:
@@ -65,7 +68,7 @@ while actief:
     scoreboard()
     blauw,rood,wit = dobbelsteen()
     uitkomsten = berekening(blauw,rood,wit)
-    print("\n",blauw," | ",rood," | ",wit," | ")
+    print("\n","Blauw:",blauw," | ","Rood:",rood," | ","Wit:",wit," | ")
     print("\n")
     print("A:",blauw,"+",rood,"+",wit,"=",uitkomsten[0])
     print("B:",blauw,"+",rood,"-",wit,"=",uitkomsten[1])
@@ -77,7 +80,12 @@ while actief:
     print("\n")
     index = keuzen()
     uitkomsten[index]
-    bepaal_lijst_kleur(blauw,rood)
+    gekozen_lijst = bepaal_lijst_kleur(blauw,rood)
+    position_lijst(gekozen_lijst,index)
+    poswit = 0
+    if index == 2 or index == 3:
+        Wit_SB.insert(poswit,index)
+        poswit+=1
 
 
 
