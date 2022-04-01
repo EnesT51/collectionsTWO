@@ -63,6 +63,7 @@ def position_lijst(lijst_kleur,index_1):
     
 
 actief = True
+poswit = 0
 while actief:
     intro()
     scoreboard()
@@ -82,9 +83,8 @@ while actief:
     uitkomsten[index]
     gekozen_lijst = bepaal_lijst_kleur(blauw,rood)
     position_lijst(gekozen_lijst,index)
-    poswit = 0
     if index == 2 or index == 3:
-        Wit_SB.insert(poswit,index)
+        Wit_SB.insert(poswit,wit)
         poswit+=1
 
 
