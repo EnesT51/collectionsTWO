@@ -50,6 +50,7 @@ def position_lijst(lijst_kleur,index_1):
         positie = int(input('in welke positie van de blauwe lijst wil je het hebben? '))
         if Blauw_SB[positie -1] == "":
            Blauw_SB[positie -1] = uitkomsten[index_1]
+           checkingtheindex(Blauw_SB,positie,uitkomsten[index_1])
         else:
             print("er zit al een waarde in de gekozen index ")
             position_lijst(lijst_kleur,index_1) 
@@ -57,16 +58,26 @@ def position_lijst(lijst_kleur,index_1):
         positie = int(input('in welke positie van de rode lijst wil je het hebben? '))
         if Rood_SB[positie -1] == "":
            Rood_SB[positie -1] = uitkomsten[index_1]
+           checkingtheindex(Rood_SB,positie,uitkomsten[index_1])
         else:
             print("er zit al een waarde in de gekozen index ")
             position_lijst(lijst_kleur,index_1)
 
-def checkingtheindex(lijst,index_1,nummer):
-    if lijst[index_1 +1] > nummer:
-        if lijst[index_1 -1] < nummer:
-            if lijst[index_1] =="":
+def checkingtheindex(lijst,index_2,nummer):
+    teller_1 = 1
+    teller_2 = 1
+    while True:
+        if len(lijst) > index_2+teller_1 and lijst[index_2+teller_1] =="":
+            teller_1 +=1
+        elif len(lijst) == index_2+teller_1 or  lijst [index_2 + teller_1] > nummer:
+            if lijst[index_2-teller_2] == "":
+                teller_2 +=1
+            elif lijst[index_2 -teller_2] < nummer:
                 return True
-    return False
+            else:
+                return False          
+        else:
+            return False
 
 actief = True
 poswit = 0
@@ -85,25 +96,11 @@ while actief:
     totaal = (maximum - minimun)
     print("D:",maximum,"-",minimun,"=",totaal)
     print("\n")
-    index = keuzen()
-    uitkomsten[index]
+    gekozen_nummer = keuzen()
+    uitkomsten[gekozen_nummer]
     gekozen_lijst = bepaal_lijst_kleur(blauw,rood)
-    position = position_lijst(gekozen_lijst,index)
-    if index == 2 or index == 3:
+    position = position_lijst(gekozen_lijst,gekozen_nummer)
+    if gekozen_nummer == 2 or gekozen_nummer == 3:
         Wit_SB[poswit] = wit
         poswit+=1
-    checkingtheindex()
     
-    
-
-
-
-
-
-
-
-
-    
-
-
-
