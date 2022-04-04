@@ -39,28 +39,34 @@ def keuzen():
 
 def bepaal_lijst_kleur(blauw,rood):
     if blauw < rood:
-        return "Rood"
+        return "rood"
     elif rood < blauw:
-        return "Blauw"
-    keuzen = input("In welke lijst wil je het hebben? Rood / Blauw:? ").upper()
+        return "blauw"
+    keuzen = input("In welke lijst wil je het hebben? Rood / Blauw:? ").lower()
     return keuzen
 
 def position_lijst(lijst_kleur,index_1):
-    if lijst_kleur == "Blauw":
+    if lijst_kleur == "blauw":
         positie = int(input('in welke positie van de blauwe lijst wil je het hebben? '))
         if Blauw_SB[positie -1] == "":
            Blauw_SB[positie -1] = uitkomsten[index_1]
         else:
             print("er zit al een waarde in de gekozen index ")
             position_lijst(lijst_kleur,index_1) 
-    elif lijst_kleur == "Rood":
+    elif lijst_kleur == "rood":
         positie = int(input('in welke positie van de rode lijst wil je het hebben? '))
         if Rood_SB[positie -1] == "":
            Rood_SB[positie -1] = uitkomsten[index_1]
         else:
             print("er zit al een waarde in de gekozen index ")
             position_lijst(lijst_kleur,index_1)
-    
+
+def checkingtheindex(lijst,index_1,nummer):
+    if lijst[index_1 +1] > nummer:
+        if lijst[index_1 -1] < nummer:
+            if lijst[index_1] =="":
+                return True
+    return False
 
 actief = True
 poswit = 0
@@ -82,10 +88,13 @@ while actief:
     index = keuzen()
     uitkomsten[index]
     gekozen_lijst = bepaal_lijst_kleur(blauw,rood)
-    position_lijst(gekozen_lijst,index)
+    position = position_lijst(gekozen_lijst,index)
     if index == 2 or index == 3:
-        Wit_SB.insert(poswit,wit)
+        Wit_SB[poswit] = wit
         poswit+=1
+    checkingtheindex()
+    
+    
 
 
 
