@@ -51,14 +51,16 @@ def position_lijst(lijst_kleur,index_1):
         if Blauw_SB[positie -1] == "":
            Blauw_SB[positie -1] = uitkomsten[index_1]
            checkingtheindex(Blauw_SB,positie,uitkomsten[index_1])
+           
         else:
             print("er zit al een waarde in de gekozen index ")
             position_lijst(lijst_kleur,index_1) 
     elif lijst_kleur == "rood":
         positie = int(input('in welke positie van de rode lijst wil je het hebben? '))
         if Rood_SB[positie -1] == "":
-           Rood_SB[positie -1] = uitkomsten[index_1]
-           checkingtheindex(Rood_SB,positie,uitkomsten[index_1])
+            Rood_SB[positie -1] = uitkomsten[index_1]
+            checkingtheindex(Rood_SB,positie,uitkomsten[index_1])
+           
         else:
             print("er zit al een waarde in de gekozen index ")
             position_lijst(lijst_kleur,index_1)
@@ -67,16 +69,18 @@ def checkingtheindex(lijst,index_2,nummer):
     teller_1 = 1
     teller_2 = 1
     while True:
-        if len(lijst) > index_2+teller_1 and lijst[index_2+teller_1] =="":
+        if len(lijst) > index_2 + teller_1 and lijst[index_2 + teller_1] =="":
             teller_1 +=1
-        elif len(lijst) == index_2+teller_1 or  lijst [index_2 + teller_1] > nummer:
-            if lijst[index_2-teller_2] == "":
+        elif len(lijst) == index_2+teller_1 or lijst [index_2 + teller_1] > nummer:
+            if lijst[index_2 - teller_2] == "":
                 teller_2 +=1
-            elif lijst[index_2 -teller_2] < nummer:
+            elif lijst[index_2 - teller_2] < nummer:
                 return True
             else:
+                print("dat niet mogelijk")
                 return False          
         else:
+            print("dat niet mogelijk")
             return False
 
 actief = True
@@ -103,4 +107,5 @@ while actief:
     if gekozen_nummer == 2 or gekozen_nummer == 3:
         Wit_SB[poswit] = wit
         poswit+=1
+    checkingtheindex(gekozen_lijst,gekozen_nummer,uitkomsten[gekozen_nummer])
     
