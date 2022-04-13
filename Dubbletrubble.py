@@ -1,3 +1,4 @@
+from audioop import reverse
 import random
 
 Blauw_SB =[-2,"","","","","","","","",""]
@@ -51,31 +52,53 @@ def position_lijst(lijst_kleur,index_1):
         if checkingtheindex(Blauw_SB,positie,uitkomsten[index_1]):
            Blauw_SB[positie -1] = uitkomsten[index_1]
         else:
-            print("er zit al een waarde in de gekozen index ")
+            print("there is already a value in the chosen index ")
             position_lijst(lijst_kleur,index_1) 
     elif lijst_kleur == "rood":
         positie = int(input('in welke positie van de rode lijst wil je het hebben? '))
-        if checkingtheindex(Rood_SB,positie,uitkomsten[index_1]):
+        if checkingtheindex_2(Rood_SB,positie,uitkomsten[index_1]):
             Rood_SB[positie -1] = uitkomsten[index_1]
         else:
-            print("er zit al een waarde in de gekozen index ")
+            print("there is already a value in the chosen index ")
             position_lijst(lijst_kleur,index_1)
 
-def checkingtheindex(lijst,index_2,nummer):
-    teller_1 = 1
-    teller_2 = 1
-    while True:
-        if len(lijst) > index_2 + teller_1 and lijst[index_2 + teller_1] =="":
-            teller_1 +=1
-        elif len(lijst) == index_2 + teller_1 or lijst [index_2 + teller_1] > nummer or lijst[index_2 + teller_1] < nummer:
-            if lijst[index_2 - teller_2] == "":
-                teller_2 +=1
-            elif lijst[index_2 - teller_2] < nummer:
+def checkingtheindex_2(lijst,index__1,nummer):
+
+    reversed(lijst)
+    if nummer in lijst or lijst[index__1-1] != "":
+        return False 
+    
+    index__1 = index__1-1 
+    for val in lijst[:index__1+1]:
+        if val != "":
+            if val > nummer:
                 return True
-            else:
-                return False          
-        else:
-            return False
+    for val in lijst[index__1:]:
+        if val != "":
+            if val < nummer:
+                return True
+    lijst[index__1] = nummer
+    reversed(lijst)
+    return True
+
+
+def checkingtheindex(lijst,index_2,nummer):
+    
+    if nummer in lijst or lijst[index_2-1] != "":
+        return False 
+    
+    index_2 = index_2-1 
+    for val in lijst[:index_2+1]:
+        if val != "":
+            if val > nummer:
+                return False
+    for val in lijst[index_2:]:
+        if val != "":
+            if val < nummer:
+                return False
+    lijst[index_2] = nummer
+    return True
+
 
 actief = True
 poswit = 0
