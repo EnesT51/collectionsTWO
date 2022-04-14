@@ -1,5 +1,6 @@
 from audioop import reverse
 import random
+import re
 
 Blauw_SB =[-2,"","","","","","","","",""]
 Rood_SB  =["","","","","","","","","",-2]
@@ -50,35 +51,34 @@ def position_lijst(lijst_kleur,index_1):
     if lijst_kleur == "blauw":
         positie = int(input('in welke positie van de blauwe lijst wil je het hebben? '))
         if checkingtheindex(Blauw_SB,positie,uitkomsten[index_1]):
-           Blauw_SB[positie -1] = uitkomsten[index_1]
+           Blauw_SB[positie -1] = uitkomsten[gekozen_nummer]
         else:
             print("there is already a value in the chosen index ")
             position_lijst(lijst_kleur,index_1) 
     elif lijst_kleur == "rood":
         positie = int(input('in welke positie van de rode lijst wil je het hebben? '))
         if checkingtheindex_2(Rood_SB,positie,uitkomsten[index_1]):
-            Rood_SB[positie -1] = uitkomsten[index_1]
+            Rood_SB[positie -1] = uitkomsten[gekozen_nummer]
         else:
             print("there is already a value in the chosen index ")
             position_lijst(lijst_kleur,index_1)
 
 def checkingtheindex_2(lijst,index__1,nummer):
-
-    reversed(lijst)
+    list.reverse(lijst)
     if nummer in lijst or lijst[index__1-1] != "":
-        return False 
-    
+        return False
+        
     index__1 = index__1-1 
     for val in lijst[:index__1+1]:
         if val != "":
             if val > nummer:
-                return True
+                return False
     for val in lijst[index__1:]:
         if val != "":
             if val < nummer:
-                return True
+                return False
+    list.reverse(lijst)
     lijst[index__1] = nummer
-    reversed(lijst)
     return True
 
 
@@ -119,8 +119,11 @@ while actief:
     print("\n")
     gekozen_nummer = keuzen()
     uitkomsten[gekozen_nummer]
+    # print(uitkomsten[gekozen_nummer])
     gekozen_lijst = bepaal_lijst_kleur(blauw,rood)
     position = position_lijst(gekozen_lijst,gekozen_nummer)
+    print(gekozen_nummer)
+
     if gekozen_nummer == 2 or gekozen_nummer == 3:
         Wit_SB[poswit] = wit
         poswit+=1
