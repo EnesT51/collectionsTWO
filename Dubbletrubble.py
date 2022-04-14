@@ -54,6 +54,7 @@ def position_lijst(lijst_kleur,index_1):
            Blauw_SB[positie -1] = uitkomsten[gekozen_nummer]
         else:
             print("there is already a value in the chosen index ")
+            print(Blauw_SB)
             position_lijst(lijst_kleur,index_1) 
     elif lijst_kleur == "rood":
         positie = int(input('in welke positie van de rode lijst wil je het hebben? '))
@@ -61,6 +62,7 @@ def position_lijst(lijst_kleur,index_1):
             Rood_SB[positie -1] = uitkomsten[gekozen_nummer]
         else:
             print("there is already a value in the chosen index ")
+            print(Rood_SB)
             position_lijst(lijst_kleur,index_1)
 
 def checkingtheindex_2(lijst,index__1,nummer):
@@ -119,11 +121,8 @@ while actief:
     print("\n")
     gekozen_nummer = keuzen()
     uitkomsten[gekozen_nummer]
-    # print(uitkomsten[gekozen_nummer])
     gekozen_lijst = bepaal_lijst_kleur(blauw,rood)
     position = position_lijst(gekozen_lijst,gekozen_nummer)
-    print(gekozen_nummer)
-
     if gekozen_nummer == 2 or gekozen_nummer == 3:
         Wit_SB[poswit] = wit
         poswit+=1
