@@ -66,20 +66,19 @@ def position_lijst(lijst_kleur,index_1):
             position_lijst(lijst_kleur,index_1)
 
 def checkingtheindex_2(lijst,index__1,nummer):
-    list.reverse(lijst)
+    
     if nummer in lijst or lijst[index__1-1] != "":
         return False
-        
+
     index__1 = index__1-1 
     for val in lijst[:index__1+1]:
         if val != "":
-            if val > nummer:
+            if val < nummer:
                 return False
     for val in lijst[index__1:]:
         if val != "":
-            if val < nummer:
+            if val > nummer:
                 return False
-    list.reverse(lijst)
     lijst[index__1] = nummer
     return True
 
@@ -89,7 +88,7 @@ def checkingtheindex(lijst,index_2,nummer):
     if nummer in lijst or lijst[index_2-1] != "":
         return False 
     
-    index_2 = index_2-1 
+    index_2 = index_2 -1 
     for val in lijst[:index_2+1]:
         if val != "":
             if val > nummer:
@@ -127,3 +126,4 @@ while actief:
         Wit_SB[poswit] = wit
         poswit+=1
     
+    print(Blauw_SB[0] * Rood_SB[0])
