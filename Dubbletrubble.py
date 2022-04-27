@@ -1,5 +1,3 @@
-from decimal import InvalidContext
-from operator import index
 import random
 
 Blauw_SB =[-2,"","","","","","","","",""]
