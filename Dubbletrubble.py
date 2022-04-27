@@ -101,6 +101,18 @@ def index_berekenenlijst(blauw_lijst,Rood_lijst):
     subtotaal_1 = blauw_lijst[0] * Rood_lijst[0] + blauw_lijst[1] * Rood_lijst[1] + blauw_lijst[2] * Rood_lijst[2] + blauw_lijst[3] * Rood_lijst[3] + blauw_lijst[4] * Rood_lijst[4] + blauw_lijst[5] * Rood_lijst[5] + blauw_lijst[6] * Rood_lijst[6] + blauw_lijst[7] * Rood_lijst[7] + blauw_lijst[8] * Rood_lijst[8] + blauw_lijst[9] * Rood_lijst[9] 
     return subtotaal_1
 
+
+def check_in_index_for_True_or_False(lijst,index):
+    
+    for val in lijst[index+1:]:
+        if val == "":
+            return True
+    for val in lijst[:index]:
+        if val  == "":
+            return True
+    return False
+
+
 actief = True
 poswit = 0
 while actief:
@@ -124,7 +136,8 @@ while actief:
     if gekozen_nummer == 2 or gekozen_nummer == 3:
         Wit_SB[poswit] = wit
         poswit+=1
-        
-print(index_berekenenlijst(Blauw_SB,Rood_SB))
+    check_True_or_False = check_in_index_for_True_or_False(gekozen_lijst,position)
+    if check_True_or_False == False:
+        print(index_berekenenlijst(Blauw_SB,Rood_SB))
 
 
