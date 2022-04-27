@@ -11,8 +11,8 @@ shuffle1 = lowercase1 + uppercase + digit + symbols
 random.shuffle(shuffle1)
 shuffle_L_U = lowercase + shuffle1
 
-if len(shuffle_L_U) <26:
-    totaal = 26 - len(shuffle_L_U)
+if len(shuffle_L_U) <24:
+    totaal = 24 - len(shuffle_L_U)
     for i in range(totaal):
         shuffle_L_U.append(random.choice(string.ascii_lowercase))
 

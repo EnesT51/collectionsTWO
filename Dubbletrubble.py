@@ -1,11 +1,10 @@
-from audioop import reverse
+from decimal import InvalidContext
+from operator import index
 import random
-import re
 
 Blauw_SB =[-2,"","","","","","","","",""]
 Rood_SB  =["","","","","","","","","",-2]
 Wit_SB   =["","","","",""]
-
 
 def intro():
     print('-----------------------------------------------------------------------')
@@ -30,7 +29,7 @@ def berekening(blauw_DS,rood_DS,wit_DS):
     berekening_1 = blauw_DS + rood_DS + wit_DS
     berekening_2 = blauw_DS + rood_DS - wit_DS
     berekening_3 = blauw_DS + rood_DS
-    berekening_4 = berekening_1 - berekening_2
+    berekening_4 = max(blauw_DS,rood_DS,wit_DS) - min(blauw_DS,rood_DS,wit_DS)
     return (berekening_1,berekening_2,berekening_3,berekening_4)
     
 def keuzen():
@@ -51,22 +50,22 @@ def position_lijst(lijst_kleur,index_1):
     if lijst_kleur == "blauw":
         positie = int(input('in welke positie van de blauwe lijst wil je het hebben? '))
         if checkingtheindex(Blauw_SB,positie,uitkomsten[index_1]):
-           Blauw_SB[positie -1] = uitkomsten[gekozen_nummer]
+           Blauw_SB[positie -1] = uitkomsten[index_1]
         else:
-            print("there is already a value in the chosen index ")
+            print("there is already a value in the chosen index")
             print(Blauw_SB)
             position_lijst(lijst_kleur,index_1) 
     elif lijst_kleur == "rood":
-        positie = int(input('in welke positie van de rode lijst wil je het hebben? '))
+        positie = int(input('in welke positie van de rode lijst wil je het hebben?  '))
         if checkingtheindex_2(Rood_SB,positie,uitkomsten[index_1]):
-            Rood_SB[positie -1] = uitkomsten[gekozen_nummer]
+            Rood_SB[positie -1] = uitkomsten[index_1]
         else:
             print("there is already a value in the chosen index ")
             print(Rood_SB)
             position_lijst(lijst_kleur,index_1)
 
 def checkingtheindex_2(lijst,index__1,nummer):
-    
+
     if nummer in lijst or lijst[index__1-1] != "":
         return False
 
@@ -81,7 +80,6 @@ def checkingtheindex_2(lijst,index__1,nummer):
                 return False
     lijst[index__1] = nummer
     return True
-
 
 def checkingtheindex(lijst,index_2,nummer):
     
@@ -101,6 +99,10 @@ def checkingtheindex(lijst,index_2,nummer):
     return True
 
 
+def index_berekenenlijst(blauw_lijst,Rood_lijst):
+    subtotaal_1 = blauw_lijst[0] * Rood_lijst[0] + blauw_lijst[1] * Rood_lijst[1] + blauw_lijst[2] * Rood_lijst[2] + blauw_lijst[3] * Rood_lijst[3] + blauw_lijst[4] * Rood_lijst[4] + blauw_lijst[5] * Rood_lijst[5] + blauw_lijst[6] * Rood_lijst[6] + blauw_lijst[7] * Rood_lijst[7] + blauw_lijst[8] * Rood_lijst[8] + blauw_lijst[9] * Rood_lijst[9] 
+    return subtotaal_1
+
 actief = True
 poswit = 0
 while actief:
@@ -115,8 +117,7 @@ while actief:
     print("C:",blauw,"+",rood,"=",uitkomsten[2])
     minimun = min(blauw,rood,wit)
     maximum = max(blauw,rood,wit)
-    totaal = (maximum - minimun)
-    print("D:",maximum,"-",minimun,"=",totaal)
+    print("D:",maximum,"-",minimun,"=",uitkomsten[3])
     print("\n")
     gekozen_nummer = keuzen()
     uitkomsten[gekozen_nummer]
@@ -125,5 +126,7 @@ while actief:
     if gekozen_nummer == 2 or gekozen_nummer == 3:
         Wit_SB[poswit] = wit
         poswit+=1
-    
-    print(Blauw_SB[0] * Rood_SB[0])
+        
+print(index_berekenenlijst(Blauw_SB,Rood_SB))
+
+

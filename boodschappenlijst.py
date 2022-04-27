@@ -1,6 +1,6 @@
 
 
-def boodschappen(list):
+def boodschappen():
     boodschappenlijst = 10
     list = {}
     for i in range(boodschappenlijst):
@@ -11,7 +11,7 @@ def boodschappen(list):
             list[vraag] += 1          
     return list 
 
-print(boodschappen)
+print(boodschappen())
 
 
 def boodschappen():
@@ -29,7 +29,7 @@ def boodschappen():
             list[vraag] += 1    
     return list
 
-print(boodschappen)
+print(boodschappen())
         
         
 

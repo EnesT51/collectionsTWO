@@ -24,15 +24,16 @@ for i in card:
     for x in card1:
         cards.append(i + " " +str(x)) 
 
-
 random.shuffle(cards)
 
+def aantalcards(amount):
 
-
-for e in range(1,8):
-    index = random.randint(0,len(cards)-1)
-    card = cards.pop(index)
-    print(f"kaart: {e}: {card}")
+    for e in range(1,amount+1):
+        index = random.randint(0,len(cards)-1)
+        card = cards.pop(index)
+        print(f"kaart: {e} {card}")
+    
+aantalcards(7)
 
 print("\n[DECK]",cards)
 
